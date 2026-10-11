@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
+  FileCheck2,
   CreditCard,
   CalendarClock,
   GraduationCap,
@@ -32,6 +33,12 @@ const navigationItems: NavItem[] = [
     href: "/estudiantes",
     icon: Users,
     description: "Búsqueda, Filtros y Acciones",
+  },
+  {
+    name: "Validación de Documentos",
+    href: "/documentos",
+    icon: FileCheck2,
+    description: "Expedientes de Admisión",
   },
   {
     name: "Tesorería y Pagos",

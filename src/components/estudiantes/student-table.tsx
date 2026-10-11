@@ -11,12 +11,11 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { TablePagination } from "@/components/ui/table-pagination";
 import {
   KeyRound,
   Fingerprint,
   CalendarX,
-  ChevronLeft,
-  ChevronRight,
   CheckCircle2,
   Clock,
   XCircle,
@@ -32,6 +31,8 @@ interface StudentTableProps {
   total: number;
   page: number;
   totalPages: number;
+  pageSize?: number;
+  onPageSizeChange?: (pageSize: number) => void;
   isLoading: boolean;
   onPageChange: (page: number) => void;
   onActionClick: (student: Student, action: StudentActionType) => void;
@@ -44,6 +45,8 @@ export function StudentTable({
   total,
   page,
   totalPages,
+  pageSize = 10,
+  onPageSizeChange,
   isLoading,
   onPageChange,
   onActionClick,
@@ -312,40 +315,18 @@ export function StudentTable({
       </div>
 
       {/* Pagination Footer */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-2">
-        <p className="text-xs text-slate-500">
-          Mostrando <span className="font-semibold text-slate-800">{students.length}</span> de{" "}
-          <span className="font-semibold text-slate-800">{total}</span> estudiantes registrados
-        </p>
-
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            disabled={page <= 1 || isLoading}
-            onClick={() => onPageChange(page - 1)}
-            className="h-8 px-2.5"
-          >
-            <ChevronLeft className="h-4 w-4 mr-1" />
-            Anterior
-          </Button>
-
-          <span className="text-xs font-semibold text-slate-700 px-2">
-            Página {page} de {totalPages}
-          </span>
-
-          <Button
-            variant="outline"
-            size="sm"
-            disabled={page >= totalPages || isLoading}
-            onClick={() => onPageChange(page + 1)}
-            className="h-8 px-2.5"
-          >
-            Siguiente
-            <ChevronRight className="h-4 w-4 ml-1" />
-          </Button>
-        </div>
-      </div>
+      <TablePagination
+        currentPage={page}
+        totalPages={totalPages}
+        pageSize={pageSize}
+        totalItems={total}
+        currentCount={students.length}
+        entityName="estudiantes registrados"
+        isLoading={isLoading}
+        onPageChange={onPageChange}
+        onPageSizeChange={onPageSizeChange ?? (() => {})}
+        pageSizeMode="input"
+      />
     </div>
   );
 }

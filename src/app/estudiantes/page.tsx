@@ -67,7 +67,7 @@ function EstudiantesContent() {
     pasoActualMatricula: pasoParam ? Number(pasoParam) : undefined,
     modoPaso: modoParam === "rezagados" ? "rezagados" : "alcanzaron",
     page: 1,
-    limit: 6,
+    limit: 10,
   });
 
   useEffect(() => {
@@ -157,10 +157,18 @@ function EstudiantesContent() {
       pasoActualMatricula: undefined,
       modoPaso: "alcanzaron",
       page: 1,
-      limit: 6,
+      limit: 10,
     });
     setStepStats(null);
     router.push("/estudiantes");
+  };
+
+  const handlePageSizeChange = (newLimit: number) => {
+    setFilters((prev) => ({
+      ...prev,
+      limit: newLimit,
+      page: 1,
+    }));
   };
 
   const handleOpenAction = (student: Student, action: StudentActionType) => {
@@ -495,6 +503,8 @@ function EstudiantesContent() {
           total={total}
           page={page}
           totalPages={totalPages}
+          pageSize={filters.limit || 10}
+          onPageSizeChange={handlePageSizeChange}
           isLoading={isLoading}
           onPageChange={(p) => setFilters((prev) => ({ ...prev, page: p }))}
           onActionClick={handleOpenAction}
