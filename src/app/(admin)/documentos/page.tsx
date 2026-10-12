@@ -154,10 +154,6 @@ export default function DocumentosPage() {
               <h2 className="text-xl font-bold text-slate-900">
                 Validación de Documentos de Admisión
               </h2>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-violet-50 text-violet-800 border border-violet-200">
-                <FileCheck2 className="h-3.5 w-3.5 text-violet-600" />
-                Expedientes Digitales
-              </span>
             </div>
             <p className="text-xs text-slate-600 font-normal">
               Revisa, aprueba u observa los documentos cargados por cada

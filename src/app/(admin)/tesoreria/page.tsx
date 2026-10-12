@@ -385,10 +385,6 @@ export default function TesoreriaPage() {
               <h2 className="text-xl font-bold text-slate-900">
                 Auditoría Financiera de Matrícula
               </h2>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-                Culqi Enterprise
-              </span>
             </div>
             <p className="text-xs text-slate-600 font-normal">
               Supervisión de transacciones confirmadas en pasarela digital y gestión de cartera pendiente de postulantes.
